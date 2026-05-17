@@ -1,0 +1,3 @@
+build:
+  cmake-ext: false
+  kconfig-ext: false
