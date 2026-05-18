@@ -9,7 +9,7 @@
  *
  * Layer 1 NAV/NUM (hold left thumb):
  *   1  2  3  4  5    6  7  8  9  0
- *  ESC CTL SFT _  END  LFT DN UP RT  '
+ *  ESC OSM-CTL OSM-SFT _  END  LFT DN UP RT  '
  *   _  _  ?   _   _    _   _   _   _  ENT
  *        _   _         _   _
  *
@@ -51,7 +51,7 @@
             bindings = <
                 &kp N1   &kp N2    &kp N3     &kp N4    &kp N5
                 &kp N6   &kp N7    &kp N8     &kp N9    &kp N0
-                &gresc   &kp LCTRL &kp LSHIFT &trans    &kp END
+                &gresc   &sk LCTRL &sk LSHIFT &trans    &kp END
                 &kp LEFT &kp DOWN  &kp UP     &kp RIGHT &kp SQT
                 &trans   &trans    &kp QMARK  &trans    &trans
                 &trans   &trans    &trans     &trans    &kp ENTER
