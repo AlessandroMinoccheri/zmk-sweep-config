@@ -16,7 +16,6 @@ ZMK firmware configuration for the **Ferris Sweep 34** split keyboard with nice!
 | 1 NAV/NUM | Hold left thumb | Numbers, navigation, arrows |
 | 2 SYM/FN | Hold right thumb | Symbols, F-keys |
 
-<<<<<<< HEAD
 =======
 ## Using CTRL
 
@@ -32,7 +31,6 @@ CTRL is a **one-shot modifier** on the NAV layer (`S` position).
 
 The one-shot modifier fires once and then disarms automatically — no need to hold anything simultaneously.
 
->>>>>>> e9ab7ba (docs: add CTRL usage instructions to README)
 ## Building firmware
 
 Firmware is built automatically via GitHub Actions on every push to `main`.
