@@ -1,9 +1,9 @@
 ---
 include:
   # Left half — nice!nano v2
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: cradio_left
 
   # Right half — nice!nano v2
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: cradio_right
