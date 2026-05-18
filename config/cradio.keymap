@@ -1,6 +1,5 @@
 /*
  * Ferris Sweep (Cradio) - ZMK keymap
- * Translated from Via/QMK layout - 3 active layers
  *
  * Layer 0 BASE:
  *   Q  W  E  R  T    Y  U  I  O  P
@@ -11,7 +10,7 @@
  * Layer 1 NAV/NUM (hold left thumb):
  *   1  2  3  4  5    6  7  8  9  0
  *  ESC CTL SFT _  END  LFT DN UP RT  '
- *   _  _  ?  MB1 MB2  MSL MSD MSU MSR ENT
+ *   _  _  ?   _   _    _   _   _   _  ENT
  *        _   _         _   _
  *
  * Layer 2 SYM/FN (hold right thumb):
@@ -23,16 +22,13 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/pointing.h>
+
+&mt {
+    flavor = "tap-preferred";
+    tapping-term-ms = <285>;
+};
 
 / {
-    behaviors {
-        mt {
-            flavor = "tap-preferred";
-            tapping-term-ms = <285>;
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
@@ -53,12 +49,12 @@
         nav_layer {
             label = "NAV";
             bindings = <
-                &kp N1   &kp N2    &kp N3    &kp N4    &kp N5
-                &kp N6   &kp N7    &kp N8    &kp N9    &kp N0
-                &gresc   &kp LCTRL &kp LSHIFT &trans   &kp END
-                &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &kp SQT
-                &trans   &trans    &kp QMARK &mkp LCLK &mkp RCLK
-                &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_UP &mmv MOVE_RIGHT &kp ENTER
+                &kp N1   &kp N2    &kp N3     &kp N4    &kp N5
+                &kp N6   &kp N7    &kp N8     &kp N9    &kp N0
+                &gresc   &kp LCTRL &kp LSHIFT &trans    &kp END
+                &kp LEFT &kp DOWN  &kp UP     &kp RIGHT &kp SQT
+                &trans   &trans    &kp QMARK  &trans    &trans
+                &trans   &trans    &trans     &trans    &kp ENTER
                 &trans   &trans
                 &trans   &trans
             >;
@@ -67,14 +63,14 @@
         sym_layer {
             label = "SYM";
             bindings = <
-                &kp F1   &kp F2  &kp F3  &kp F4   &kp F5
-                &kp F6   &kp F7  &kp F8  &kp F9   &kp F10
-                &kp TAB  &trans  &trans  &kp DQT  &kp LBRC
+                &kp F1  &kp F2  &kp F3  &kp F4   &kp F5
+                &kp F6  &kp F7  &kp F8  &kp F9   &kp F10
+                &kp TAB &trans  &trans  &kp DQT  &kp LBRC
                 &kp MINUS &kp EQUAL &kp LBKT &kp RBKT &kp PIPE
-                &trans   &trans  &trans  &kp SQT  &kp RBRC
-                &kp UNDERSCORE &kp PLUS &trans &trans &bootloader
-                &trans   &trans
-                &trans   &trans
+                &trans  &trans  &trans  &kp SQT  &kp RBRC
+                &kp UNDER &kp PLUS &trans &trans &bootloader
+                &trans  &trans
+                &trans  &trans
             >;
         };
     };
