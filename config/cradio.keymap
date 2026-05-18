@@ -1,30 +1,32 @@
 /*
- * Ferris Sweep (Aurora) — ZMK keymap
- * Translated from Via/QMK layout (3 active layers)
+ * Ferris Sweep (Cradio) - ZMK keymap
+ * Translated from Via/QMK layout - 3 active layers
  *
- * Physical layout (34 keys):
+ * Layer 0 BASE:
+ *   Q  W  E  R  T    Y  U  I  O  P
+ *   A  S  D  F  G    H  J  K  L  ;
+ *   Z  X  C  V  B    N  M  ,  .  SFT/SL
+ *        GUI/` SPC/1    BSPC/2 ALT/TAB
  *
- * ┌─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┐
- * │  Q  │  W  │  E  │  R  │  T  │   │  Y  │  U  │  I  │  O  │  P  │
- * ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
- * │  A  │  S  │  D  │  F  │  G  │   │  H  │  J  │  K  │  L  │  ;  │
- * ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
- * │  Z  │  X  │  C  │  V  │  B  │   │  N  │  M  │  ,  │  .  │SFT//│
- * └─────┴─────┴──┬──┴──┬──┴─────┘   └─────┴──┬──┴──┬──┴─────┴─────┘
- *                │GUI/`│  SPC/L1 │   │BSPC/L2│ALT/TAB│
- *                └─────┴─────────┘   └───────┴───────┘
+ * Layer 1 NAV/NUM (hold left thumb):
+ *   1  2  3  4  5    6  7  8  9  0
+ *  ESC CTL SFT _  END  LFT DN UP RT  '
+ *   _  _  ?  MB1 MB2  MSL MSD MSU MSR ENT
+ *        _   _         _   _
+ *
+ * Layer 2 SYM/FN (hold right thumb):
+ *   F1 F2 F3 F4 F5   F6  F7 F8 F9 F10
+ *  TAB _  _  "  {     -   =  [  ]  |
+ *   _  _  _  '  }     _   +  _  _  BOOT
+ *        _  _          _   _
  */
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/zmk/pointing.h>
 
 / {
     behaviors {
-        /*
-         * Tune mod-tap to tap-preferred so home-row mods feel like QMK.
-         * Raise tapping_term_ms if you get unintended modifier triggers.
-         */
         mt {
             flavor = "tap-preferred";
             tapping-term-ms = <285>;
@@ -34,46 +36,45 @@
     keymap {
         compatible = "zmk,keymap";
 
-        /* ── Layer 0 : BASE ──────────────────────────────────────────── */
         default_layer {
             label = "BASE";
             bindings = <
-        /*  ╔═════════════╦═════════╦═════════╦═════════╦═════════╗   ╔═════════╦═════════╦═════════╦═════════╦═════════════╗ */
-            &kp Q          &kp W     &kp E     &kp R     &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P
-            &kp A          &kp S     &kp D     &kp F     &kp G         &kp H     &kp J     &kp K     &kp L     &kp SEMICOLON
-            &kp Z          &kp X     &kp C     &kp V     &kp B         &kp N     &kp M     &kp COMMA &kp DOT   &mt LSHIFT SLASH
-        /*                                     ╚══════════╦══════════╗   ╔══════════╦══════════╝                             */
-                                          &mt LGUI GRAVE  &lt 1 SPACE   &lt 2 BSPC  &mt LALT TAB
+                &kp Q           &kp W        &kp E        &kp R        &kp T
+                &kp Y           &kp U        &kp I        &kp O        &kp P
+                &kp A           &kp S        &kp D        &kp F        &kp G
+                &kp H           &kp J        &kp K        &kp L        &kp SEMICOLON
+                &kp Z           &kp X        &kp C        &kp V        &kp B
+                &kp N           &kp M        &kp COMMA    &kp DOT      &mt LSHIFT SLASH
+                &mt LGUI GRAVE  &lt 1 SPACE
+                &lt 2 BSPC      &mt LALT TAB
             >;
         };
 
-        /* ── Layer 1 : NAV / NUMBERS (hold left thumb) ───────────────── */
         nav_layer {
             label = "NAV";
             bindings = <
-        /*  Numbers row                                                    Arrows / mouse row                                 */
-            &kp N1        &kp N2    &kp N3    &kp N4    &kp N5        &kp N6    &kp N7    &kp N8    &kp N9    &kp N0
-        /*  Escape / ctrl                                                  Arrow keys                                         */
-            &gresc        &kp LCTRL &kp LSHIFT &trans   &kp END       &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &kp SQT
-        /*  Mouse buttons / question mark                                  Mouse cursor movement                              */
-            &trans        &trans    &kp QMARK &mkp LCLK &mkp RCLK     &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_UP &mmv MOVE_RIGHT &kp ENTER
-        /*  Thumbs — transparent (pass through to base)                                                                       */
-                                              &trans    &trans        &trans    &trans
+                &kp N1   &kp N2    &kp N3    &kp N4    &kp N5
+                &kp N6   &kp N7    &kp N8    &kp N9    &kp N0
+                &gresc   &kp LCTRL &kp LSHIFT &trans   &kp END
+                &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &kp SQT
+                &trans   &trans    &kp QMARK &mkp LCLK &mkp RCLK
+                &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_UP &mmv MOVE_RIGHT &kp ENTER
+                &trans   &trans
+                &trans   &trans
             >;
         };
 
-        /* ── Layer 2 : SYMBOLS / FUNCTION KEYS (hold right thumb) ─────── */
         sym_layer {
             label = "SYM";
             bindings = <
-        /*  Function keys F1-F5                                            Function keys F6-F10                               */
-            &kp F1        &kp F2    &kp F3    &kp F4    &kp F5        &kp F6    &kp F7    &kp F8    &kp F9    &kp F10
-        /*  Tab / quotes / curly braces                                    Minus, equal, brackets, pipe                       */
-            &kp TAB       &trans    &trans    &kp DQT   &kp LBRC      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT  &kp PIPE
-        /*  Single quote / right curly brace                               Underscore, plus, bootloader                       */
-            &trans        &trans    &trans    &kp SQT   &kp RBRC      &kp UNDERSCORE &kp PLUS &trans &trans   &bootloader
-        /*  Thumbs — transparent                                                                                               */
-                                              &trans    &trans        &trans    &trans
+                &kp F1   &kp F2  &kp F3  &kp F4   &kp F5
+                &kp F6   &kp F7  &kp F8  &kp F9   &kp F10
+                &kp TAB  &trans  &trans  &kp DQT  &kp LBRC
+                &kp MINUS &kp EQUAL &kp LBKT &kp RBKT &kp PIPE
+                &trans   &trans  &trans  &kp SQT  &kp RBRC
+                &kp UNDERSCORE &kp PLUS &trans &trans &bootloader
+                &trans   &trans
+                &trans   &trans
             >;
         };
     };
